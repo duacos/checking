@@ -1,11 +1,8 @@
 import React from "react";
 import Home from "../pages/Home";
+import Layout from "./Layout";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
-const Layout = ({ children }) => {
-  return <React.Fragment>{children}</React.Fragment>;
-};
 
 const RouterLayout = ({ component: Component, ...args }) => (
   <Route
@@ -18,7 +15,7 @@ const RouterLayout = ({ component: Component, ...args }) => (
   />
 );
 
-const App = () => (
+const Routing = () => (
   <BrowserRouter>
     <Switch>
       <RouterLayout path="/" component={Home} />
@@ -26,4 +23,4 @@ const App = () => (
   </BrowserRouter>
 );
 
-export default App;
+export default Routing;

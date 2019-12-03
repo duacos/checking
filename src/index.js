@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./styles/App.sass";
+import "./styles/general.sass";
 import "./styles/normalize.css";
-import App from "./components/App";
+import Routing from "./components/Routing";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
@@ -13,7 +13,7 @@ const store = createStore(reducers, {}, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Routing />
   </Provider>,
   document.getElementById("root")
 );
