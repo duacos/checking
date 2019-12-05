@@ -1,18 +1,22 @@
 import React from "react";
 import "../styles/HomeStyles.sass";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import * as empresasActions from "../actions/empresasActions";
+import { ReactComponent as AddButtonImg } from "../assets/images/round-add-button.svg";
 
-class App extends React.Component {
+class Home extends React.Component {
   componentDidMount() {
-    this.props.traerTodos();
+    if (!this.props.data.length) this.props.traerTodos();
   }
 
   listEmpresas() {
-    return this.props.data.map(empresa => {
+    return Array.from(this.props.data).map(empresa => {
       return (
         <div key={empresa.id} className="itemList-item">
-          <h1>{empresa.name}</h1>
+          <h1>
+            <Link to={`/empresas/${empresa.id}`}>{empresa.name}</Link>
+          </h1>
           {empresa.description}
         </div>
       );
@@ -20,9 +24,20 @@ class App extends React.Component {
   }
 
   render() {
+    console.log(this.props);
+    if (this.props.loading === true) {
+      return "loading...";
+    }
     return (
       <div className="Home">
         <div className="content">
+          <div className="center">
+            <div className="itemList-item-test center-block">
+              <div className="itemList-item-test-img">
+                <AddButtonImg />
+              </div>
+            </div>
+          </div>
           <div className="itemList">{this.listEmpresas()}</div>
         </div>
       </div>
@@ -34,4 +49,4 @@ const mapStateToProps = reducers => {
   return reducers.empresasReducer;
 };
 
-export default connect(mapStateToProps, empresasActions)(App);
+export default connect(mapStateToProps, empresasActions)(Home);

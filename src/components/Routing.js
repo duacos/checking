@@ -1,5 +1,6 @@
 import React from "react";
 import Home from "../pages/Home";
+import ShowEmpresa from "../pages/ShowEmpresa";
 import Layout from "./Layout";
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -18,7 +19,12 @@ const RouterLayout = ({ component: Component, ...args }) => (
 const Routing = () => (
   <BrowserRouter>
     <Switch>
-      <RouterLayout path="/" component={Home} />
+      <RouterLayout exact path="/" component={Home} />
+      <RouterLayout
+        exact
+        path="/empresas/:empresa_id"
+        component={ShowEmpresa}
+      />
     </Switch>
   </BrowserRouter>
 );
