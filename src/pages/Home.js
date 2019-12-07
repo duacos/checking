@@ -34,7 +34,9 @@ class Home extends React.Component {
           <div className="center">
             <div className="itemList-item-test center-block">
               <div className="itemList-item-test-img">
-                <AddButtonImg />
+                <Link to="/new">
+                  <AddButtonImg />
+                </Link>
               </div>
             </div>
           </div>

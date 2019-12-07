@@ -3,6 +3,8 @@ import {
   TRAER_EMPRESAS,
   ERROR,
   LOADING,
+  CREAR,
+  LOCATION_CHANGE,
   TRAER_UNO
 } from "../types/EmpresasTypes";
 
@@ -44,6 +46,34 @@ export const traerUno = empresa_id => async dispatch => {
     dispatch({
       type: ERROR,
       payload: "algo salió mal"
+    });
+  }
+};
+
+export const crearEmpresa = ({ name, description }) => async dispatch => {
+  try {
+    const response = await axios.post("http://localhost:1500/api/v2/empresas", {
+      name,
+      description
+    });
+
+    dispatch({
+      type: CREAR,
+      payload: response.data
+    });
+  } catch (error) {
+    console.log("Error: " + error.message);
+    dispatch({
+      type: ERROR,
+      payload: "algo salió mal"
+    });
+  }
+};
+
+export const locationChange = current_id => async dispatch => {
+  if (!current_id) {
+    dispatch({
+      type: LOCATION_CHANGE
     });
   }
 };

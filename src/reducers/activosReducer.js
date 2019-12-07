@@ -1,33 +1,31 @@
 import {
-  TRAER_EMPRESAS,
+  TRAER_ACTIVOS,
   ERROR,
   LOADING,
-  LOCATION_CHANGE,
-  TRAER_UNO,
-  CREAR
-} from "../types/EmpresasTypes";
+  EDITAR_ACTIVO,
+  TRAER_UN_ACTIVO,
+  TOGGLE_ACTIVO
+} from "../types/ActivosTypes";
 
 const INITIAL_STATE = {
   data: [],
+  visible: false,
   loading: false,
   error: ""
 };
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TRAER_EMPRESAS:
+    case TRAER_ACTIVOS:
       return { ...state, data: action.payload, loading: false, error: "" };
-
+    case EDITAR_ACTIVO:
+      return { ...state, data: action.payload, loading: false, error: "" };
     case LOADING:
       return { ...state, loading: true };
+    case TOGGLE_ACTIVO:
+      return { ...state, visible: action.payload };
 
-    case LOCATION_CHANGE: {
-      return {};
-    }
-
-    case TRAER_UNO:
-      return { ...state, data: action.payload, loading: false, error: "" };
-    case CREAR:
+    case TRAER_UN_ACTIVO:
       return { ...state, data: action.payload, loading: false, error: "" };
 
     case ERROR:
