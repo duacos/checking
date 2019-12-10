@@ -1,53 +1,49 @@
 import axios from "axios";
-import {
-  TRAER_ACTIVOS,
-  EDITAR_ACTIVO,
-  TRAER_UN_ACTIVO,
-  TOGGLE_ACTIVO
-} from "../types/ActivosTypes";
-
-export const traerUno = empresa_id => async dispatch => {
-  const response = await axios.get(
-    `http://localhost:1500/api/v2/activos/${empresa_id}`
-  );
-  dispatch({
-    type: TRAER_UN_ACTIVO,
-    payload: response.data
-  });
-};
+import { TRAER_UNO, ERROR } from "../types/ActivosTypes";
 
 export const editarActivo = (empresa_id, data) => async (
   dispatch,
   getState
 ) => {
-  if (getState().empresasReducer.data.activo) {
-    console.log("put executed from activosActions");
+  if (
+    Object.keys(getState().activosReducer.data).length > 0 ||
+    getState().empresasReducer.data.activo
+  ) {
+    const activo_id =
+      getState().activosReducer.data.id ||
+      getState().empresasReducer.data.activo.id;
+    try {
+      const response = await axios.put(
+        `http://localhost:1500/api/v2/activos/${activo_id}`,
+        data
+      );
 
-    const response = await axios.put(
-      `http://localhost:1500/api/v2/activos/${empresa_id}`,
-      data
-    );
-    dispatch({
-      type: EDITAR_ACTIVO,
-      payload: response.data
-    });
+      dispatch({
+        type: TRAER_UNO,
+        payload: response.data
+      });
+
+      console.log("put executed from activosActions with state: ", getState());
+    } catch (error) {
+      console.log("Error: " + error.message);
+      dispatch({
+        type: ERROR,
+        payload: "algo salió mal"
+      });
+    }
   } else {
-    console.log("post executed from activosActions");
+    console.log("post executed from activosActions state");
+    console.log("state BEFORE: ", getState());
+
     const response = await axios.post(`http://localhost:1500/api/v2/activos`, {
       ...data,
       empresa_id
     });
     dispatch({
-      type: TRAER_ACTIVOS,
+      type: TRAER_UNO,
       payload: response.data
     });
-  }
-};
 
-export const toggleVisible = visible => async (dispatch, getState) => {
-  getState().politicasReducer.visible = false;
-  dispatch({
-    type: TOGGLE_ACTIVO,
-    payload: !visible
-  });
+    console.log("state AFTER: ", getState());
+  }
 };

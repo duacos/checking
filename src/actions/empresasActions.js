@@ -1,11 +1,9 @@
 import axios from "axios";
 import {
-  TRAER_EMPRESAS,
   ERROR,
   LOADING,
-  CREAR,
-  LOCATION_CHANGE,
-  TRAER_UNO
+  TRAER_EMPRESAS_DATA,
+  TOGGLE_FEATURE
 } from "../types/EmpresasTypes";
 
 export const traerTodos = () => async dispatch => {
@@ -16,7 +14,7 @@ export const traerTodos = () => async dispatch => {
   try {
     const response = await axios.get("http://localhost:1500/api/v2/empresas");
     dispatch({
-      type: TRAER_EMPRESAS,
+      type: TRAER_EMPRESAS_DATA,
       payload: response.data
     });
   } catch (error) {
@@ -38,7 +36,7 @@ export const traerUno = empresa_id => async dispatch => {
     );
 
     dispatch({
-      type: TRAER_UNO,
+      type: TRAER_EMPRESAS_DATA,
       payload: response.data
     });
   } catch (error) {
@@ -58,7 +56,7 @@ export const crearEmpresa = ({ name, description }) => async dispatch => {
     });
 
     dispatch({
-      type: CREAR,
+      type: TRAER_EMPRESAS_DATA,
       payload: response.data
     });
   } catch (error) {
@@ -70,10 +68,33 @@ export const crearEmpresa = ({ name, description }) => async dispatch => {
   }
 };
 
-export const locationChange = current_id => async dispatch => {
-  if (!current_id) {
-    dispatch({
-      type: LOCATION_CHANGE
-    });
+export const toggleFeature = feature => (dispatch, getState) => {
+  console.log(
+    "empresasActions politicasReducer BEFORE: ",
+    getState().politicasReducer
+  );
+  Object.keys(getState().empresasReducer.visibility).forEach(key => {
+    if (getState().empresasReducer.visibility[feature] !== feature)
+      getState().empresasReducer.visibility[key] = false;
+  });
+
+  dispatch({
+    type: TOGGLE_FEATURE,
+    payload: feature
+  });
+  console.log(
+    "empresasActions politicasReducer AFTER: ",
+    getState().politicasReducer
+  );
+};
+
+export const locationChange = empresa_id => async (dispatch, getState) => {
+  const prev_id = getState().empresasReducer.data.id;
+  if (empresa_id !== prev_id || !empresa_id) {
+    getState().politicasReducer.data = {};
+    getState().activosReducer.data = {};
+    getState().accesosReducer.data = {};
+
+    console.log("LOCATION CHANGE");
   }
 };

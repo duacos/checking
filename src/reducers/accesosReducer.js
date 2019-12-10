@@ -1,8 +1,8 @@
 import {
-  TRAER_UNA,
-  LOCATION_CHANGE_POLITICA,
-  TOGGLE_POLITICA
-} from "../types/PoliticasTypes";
+  TRAER_UNO,
+  TOGGLE_ACCESO,
+  LOCATION_CHANGE_ACCESO
+} from "../types/AccesosTypes";
 
 const INITIAL_STATE = {
   data: {},
@@ -13,14 +13,14 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case LOCATION_CHANGE_POLITICA: {
-      return state;
+    case LOCATION_CHANGE_ACCESO: {
+      return { ...state, data: {} };
     }
 
-    case TOGGLE_POLITICA:
+    case TOGGLE_ACCESO:
       return { ...state, visible: action.payload };
 
-    case TRAER_UNA:
+    case TRAER_UNO:
       return { ...state, data: action.payload, loading: false, error: "" };
 
     default:

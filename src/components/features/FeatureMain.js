@@ -7,135 +7,76 @@ import { ReactComponent as Enviromental } from "../../assets/images/enviromental
 import { ReactComponent as ServerImg } from "../../assets/images/serverimg.svg";
 import { ReactComponent as TowerImg } from "../../assets/images/tower.svg";
 import { ReactComponent as MentenimientoImg } from "../../assets/images/mantenimiento.svg";
-import PoliticasForm from "./PoliticasForm";
-import ActivosForm from "./ActivosForm";
 
-import * as politicasActions from "../../actions/politicasActions";
-import * as activosActions from "../../actions/activosActions";
+import * as empresasActions from "../../actions/empresasActions";
 import { connect } from "react-redux";
 
-const {
-  traerUna: politicasTraerUna,
-  toggleVisible: politicasToggleVisible
-} = politicasActions;
+import Banner from "./Banner";
 
-const {
-  traerUno: activosTraerUno,
-  toggleVisible: activosToggleVisible
-} = activosActions;
+const { toggleFeature: empresasToggleFeature } = empresasActions;
 
-class FeatureMain extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      seguridad_info: "No realizado",
-      revision_string: "No realizado"
-    };
-  }
+const FeatureMain = props => {
+  const toggle = reducer => {
+    props.empresasToggleFeature(reducer);
+  };
 
-  componentDidMount() {
-    const { politicasReducer, params, politicasTraerUna } = this.props;
-    const { activosReducer, activosTraerUno } = this.props;
+  return (
+    <div className="content">
+      <div className="feature-section">
+        <div className="feature-list">
+          <FeatureItem
+            text="Políticas de seguridad"
+            ImgComponent={SegOp}
+            handleClick={toggle.bind(this, "politicaVisible")}
+          />
 
-    if (politicasReducer.data.length && activosReducer.data.length) {
-      politicasTraerUna(params.empresa_id);
-      activosTraerUno(params.empresa_id);
-    }
-  }
+          <FeatureItem
+            text="Gestión de Activos"
+            ImgComponent={Execution}
+            handleClick={toggle.bind(this, "activoVisible")}
+          />
 
-  togglePolitica() {
-    this.props.politicasToggleVisible(this.props.politicasReducer.visible);
-  }
+          <FeatureItem
+            text="Control de acceso"
+            ImgComponent={Key}
+            handleClick={toggle.bind(this, "accesoVisible")}
+          />
 
-  toggleActivo() {
-    this.props.activosToggleVisible(this.props.activosReducer.visible);
-  }
-
-  showPolitica() {
-    const { politicasReducer, activosReducer } = this.props;
-    if (politicasReducer.visible === true && activosReducer.visible === false) {
-      return (
-        <PoliticasForm
-          {...this.props}
-          politica_id={this.props.params.politica_id}
-          empresa_id={this.props.params.empresa_id}
-        />
-      );
-    } else {
-      return "";
-    }
-  }
-
-  showActivo() {
-    const { politicasReducer, activosReducer } = this.props;
-    if (politicasReducer.visible === false && activosReducer.visible === true) {
-      return <ActivosForm empresa_id={this.props.params.empresa_id} />;
-    } else {
-      return "";
-    }
-  }
-
-  render() {
-    console.log(this.props);
-
-    return (
-      <React.Fragment>
-        <div className="content">
-          <div className="feature-section">
-            <div className="feature-list">
-              <FeatureItem
-                text="Políticas de seguridad"
-                ImgComponent={SegOp}
-                handleClick={this.togglePolitica.bind(this)}
-              />
-
-              <FeatureItem
-                text="Gestión de Activos"
-                ImgComponent={Execution}
-                handleClick={this.toggleActivo.bind(this)}
-              />
-
-              <FeatureItem text="Control de acceso" ImgComponent={Key} />
-              <FeatureItem
-                text="Seguridad física y ambiental"
-                ImgComponent={Enviromental}
-              />
-              <FeatureItem
-                text="Seguridad en la operativa"
-                ImgComponent={ServerImg}
-              />
-              <FeatureItem
-                text="Seguridad en las telecomunicaciones"
-                ImgComponent={TowerImg}
-              />
-              <FeatureItem
-                text="Adquisición, desarrollo y mantenimiento"
-                ImgComponent={MentenimientoImg}
-              />
-            </div>
-
-            <div className="feature-banner">
-              <div className="feature-banner-box">
-                {this.showPolitica()}
-                {this.showActivo()}
-              </div>
-            </div>
-          </div>
+          <FeatureItem
+            text="Seguridad física y ambiental"
+            ImgComponent={Enviromental}
+          />
+          <FeatureItem
+            text="Seguridad en la operativa"
+            ImgComponent={ServerImg}
+          />
+          <FeatureItem
+            text="Seguridad en las telecomunicaciones"
+            ImgComponent={TowerImg}
+          />
+          <FeatureItem
+            text="Adquisición, desarrollo y mantenimiento"
+            ImgComponent={MentenimientoImg}
+          />
         </div>
-      </React.Fragment>
-    );
-  }
-}
 
-const mapStateToProps = ({ politicasReducer, activosReducer }) => {
-  return { politicasReducer, activosReducer };
+        <Banner empresa_id={props.params.empresa_id} />
+      </div>
+    </div>
+  );
+};
+
+const mapStateToProps = ({
+  empresasReducer,
+  politicasReducer,
+  activosReducer,
+  accesosReducer
+}) => {
+  return { empresasReducer, politicasReducer, activosReducer, accesosReducer };
 };
 
 const mapDispatchToProps = {
-  politicasTraerUna,
-  politicasToggleVisible,
-  activosTraerUno,
-  activosToggleVisible
+  empresasToggleFeature
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FeatureMain);

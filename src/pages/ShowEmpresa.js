@@ -1,18 +1,20 @@
 import React from "react";
 import * as empresasActions from "../actions/empresasActions";
-import * as politicasActions from "../actions/politicasActions";
 
 import { connect } from "react-redux";
 import "../styles/ViewStyles.sass";
 
 import FeatureMain from "../components/features/FeatureMain";
 
-const { traerUno: empresasTraerUno } = empresasActions;
-const { traerUna: politicasTraerUna } = politicasActions;
+const {
+  traerUno: empresasTraerUno,
+  locationChange: empresasLocationChange
+} = empresasActions;
 
 class ShowEmpresa extends React.Component {
   componentDidMount() {
     this.props.empresasTraerUno(this.props.match.params.empresa_id);
+    this.props.empresasLocationChange(this.props.match.params.empresa_id);
   }
   render() {
     const { data } = this.props.empresasReducer;
@@ -37,13 +39,17 @@ class ShowEmpresa extends React.Component {
   }
 }
 
-const mapStateToProps = ({ empresasReducer, politicasReducer }) => {
-  return { empresasReducer, politicasReducer };
+const mapStateToProps = ({
+  empresasReducer,
+  politicasReducer,
+  activosReducer
+}) => {
+  return { empresasReducer, politicasReducer, activosReducer };
 };
 
 const mapDispatchToProps = {
   empresasTraerUno,
-  politicasTraerUna
+  empresasLocationChange
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShowEmpresa);

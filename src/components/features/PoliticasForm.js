@@ -3,10 +3,7 @@ import * as politicasActions from "../../actions/politicasActions";
 import { connect } from "react-redux";
 import SelectForm from "../SelectForm";
 
-const {
-  editarPolitica: politicasEditarPolitica,
-  locationChange: politicasLocationChange
-} = politicasActions;
+const { editarPolitica: politicasEditarPolitica } = politicasActions;
 
 class PoliticasForm extends React.Component {
   constructor(props) {
@@ -15,10 +12,6 @@ class PoliticasForm extends React.Component {
       seguridad_info: "No realizado",
       revision_string: "No realizado"
     };
-  }
-
-  componentDidMount() {
-    this.props.politicasLocationChange(this.props.empresa_id);
   }
 
   seguridadInfoSelect(e) {
@@ -39,6 +32,7 @@ class PoliticasForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const {
       seguridad_info,
       revision_string
@@ -46,37 +40,34 @@ class PoliticasForm extends React.Component {
 
     return (
       <React.Fragment>
-        <div>
-          <div className="item-info">
-            Conjunto de politicas para la seguridad de la informacion:
-            <SelectForm
-              value={seguridad_info}
-              handleSelect={this.seguridadInfoSelect.bind(this)}
-            />
-          </div>
-
-          <div className="item-info">
-            Revision de politicas para la seguridad de la informacion:
-            <SelectForm
-              value={revision_string}
-              handleSelect={this.resvisionStringSelect.bind(this)}
-            />
-          </div>
-
-          <button onClick={this.sendChanges.bind(this)}>Actualizar</button>
+        <div className="item-info">
+          Conjunto de politicas para la seguridad de la informacion:
+          <SelectForm
+            value={seguridad_info}
+            handleSelect={this.seguridadInfoSelect.bind(this)}
+          />
         </div>
+
+        <div className="item-info">
+          Revision de politicas para la seguridad de la informacion:
+          <SelectForm
+            defaultValue={revision_string}
+            handleSelect={this.resvisionStringSelect.bind(this)}
+          />
+        </div>
+
+        <button onClick={this.sendChanges.bind(this)}>Actualizar</button>
       </React.Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ politicasReducer }) => {
-  return { politicasReducer };
+const mapStateToProps = ({ empresasReducer, politicasReducer }) => {
+  return { empresasReducer, politicasReducer };
 };
 
 const mapDispatchToProps = {
-  politicasEditarPolitica,
-  politicasLocationChange
+  politicasEditarPolitica
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(PoliticasForm);
