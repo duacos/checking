@@ -10,20 +10,59 @@ const { editarAcceso: accesosEditarAcceso } = accesosActions;
 class AccesosForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      politicaControl: "No realizado",
-      controlAcceso: "No realizado",
-      gestionAltasBajas: "No realizado",
-      gestionDerechosUsuarios: "No realizado",
-      gestionDerechosEspeciales: "No realizado",
-      revisionDerechos: "No realizado",
-      retirada: "No realizado",
-      restriccion: "No realizado",
-      procedimientos: "No realizado",
-      gestionPassword: "No realizado",
-      uso: "No realizado",
-      accesoCodigo: "No realizado"
-    };
+
+    const { accesosReducer, empresasReducer } = this.props;
+
+    const localReducer = accesosReducer;
+
+    if (Object.keys(localReducer.data).length > 0) {
+      this.state = {
+        politicaControl: localReducer.data.politicaControl,
+        controlAcceso: localReducer.data.controlAcceso,
+        gestionAltasBajas: localReducer.data.gestionAltasBajas,
+        gestionDerechosUsuarios: localReducer.data.gestionDerechosUsuarios,
+        gestionDerechosEspeciales: localReducer.data.gestionDerechosEspeciales,
+        revisionDerechos: localReducer.data.revisionDerechos,
+        retirada: localReducer.data.retirada,
+        restriccion: localReducer.data.restriccion,
+        procedimientos: localReducer.data.procedimientos,
+        gestionPassword: localReducer.data.gestionPassword,
+        uso: localReducer.data.uso,
+        accesoCodigo: localReducer.data.accesoCodigo
+      };
+    } else if (empresasReducer.data.acceso) {
+      this.state = {
+        politicaControl: empresasReducer.data.acceso.politicaControl,
+        controlAcceso: empresasReducer.data.acceso.controlAcceso,
+        gestionAltasBajas: empresasReducer.data.acceso.gestionAltasBajas,
+        gestionDerechosUsuarios:
+          empresasReducer.data.acceso.gestionDerechosUsuarios,
+        gestionDerechosEspeciales:
+          empresasReducer.data.acceso.gestionDerechosEspeciales,
+        revisionDerechos: empresasReducer.data.acceso.revisionDerechos,
+        retirada: empresasReducer.data.acceso.retirada,
+        restriccion: empresasReducer.data.acceso.restriccion,
+        procedimientos: empresasReducer.data.acceso.procedimientos,
+        gestionPassword: empresasReducer.data.acceso.gestionPassword,
+        uso: empresasReducer.data.acceso.uso,
+        accesoCodigo: empresasReducer.data.acceso.accesoCodigo
+      };
+    } else {
+      this.state = {
+        politicaControl: "No realizado",
+        controlAcceso: "No realizado",
+        gestionAltasBajas: "No realizado",
+        gestionDerechosUsuarios: "No realizado",
+        gestionDerechosEspeciales: "No realizado",
+        revisionDerechos: "No realizado",
+        retirada: "No realizado",
+        restriccion: "No realizado",
+        procedimientos: "No realizado",
+        gestionPassword: "No realizado",
+        uso: "No realizado",
+        accesoCodigo: "No realizado"
+      };
+    }
   }
 
   politicaControlSelect(e) {
@@ -107,6 +146,7 @@ class AccesosForm extends React.Component {
   }
 
   render() {
+    console.log(this.props);
     const {
       politicaControl,
       controlAcceso,
@@ -120,7 +160,7 @@ class AccesosForm extends React.Component {
       gestionPassword,
       uso,
       accesoCodigo
-    } = this.props.accesosReducer.data;
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -223,8 +263,8 @@ class AccesosForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ accesosReducer }) => {
-  return { accesosReducer };
+const mapStateToProps = ({ empresasReducer, accesosReducer }) => {
+  return { empresasReducer, accesosReducer };
 };
 
 const mapDispatchToProps = {

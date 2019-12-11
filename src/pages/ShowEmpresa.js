@@ -3,8 +3,9 @@ import * as empresasActions from "../actions/empresasActions";
 
 import { connect } from "react-redux";
 import "../styles/ViewStyles.sass";
+import "../styles/ViewDataStyles.sass";
 
-import FeatureMain from "../components/features/FeatureMain";
+import CumpDominios from "../components/tables/CumpDominios";
 
 const {
   traerUno: empresasTraerUno,
@@ -16,7 +17,31 @@ class ShowEmpresa extends React.Component {
     this.props.empresasTraerUno(this.props.match.params.empresa_id);
     this.props.empresasLocationChange(this.props.match.params.empresa_id);
   }
+
+  asNumber(attr) {
+    if (attr === "No realizado") return 0;
+    else if (attr === "Realizado informalmente") return 20;
+    else if (attr === "Planificado") return 40;
+    else if (attr === "Bien definido") return 60;
+    else if (attr === "Cuantitativamente controlado") return 80;
+    else if (attr === "Mejora continua") return 100;
+    else if (attr === null) return 0;
+  }
+
+  promedio() {
+    let suma = 0;
+
+    Array.from(arguments).forEach(current => {
+      suma += typeof current === "string" ? this.asNumber(current) : current;
+    });
+
+    return Math.round(suma / arguments.length);
+  }
+
   render() {
+    const { empresasReducer } = this.props;
+
+    console.log(empresasReducer.data.seguridad_info);
     const { data } = this.props.empresasReducer;
     const { loading } = this.props.empresasReducer;
 
@@ -25,15 +50,26 @@ class ShowEmpresa extends React.Component {
     }
 
     return (
-      <div className="view">
-        <div className="content">
-          <div className="view-title">
-            <h1>{data.name}</h1>
-            <h3>{data.description}</h3>
-          </div>
+      <div className="content">
+        <div className="view-title">
+          <h1>{data.name}</h1>
+          <h3>{data.description}</h3>
         </div>
 
-        <FeatureMain {...this.props.match} />
+        <div className="feature-section">
+          <div className="feature-list">
+            <div className="show-banner">
+              <CumpDominios
+                promedio={this.promedio.bind(this)}
+                empresasReducer={empresasReducer}
+              />
+            </div>
+          </div>
+
+          <div className="feature-banner ">
+            <div className="show-banner-2">Hola mundo</div>
+          </div>
+        </div>
       </div>
     );
   }

@@ -29,34 +29,37 @@ const FeatureMain = props => {
             ImgComponent={SegOp}
             handleClick={toggle.bind(this, "politicaVisible")}
           />
-
           <FeatureItem
             text="Gestión de Activos"
             ImgComponent={Execution}
             handleClick={toggle.bind(this, "activoVisible")}
           />
-
           <FeatureItem
             text="Control de acceso"
             ImgComponent={Key}
             handleClick={toggle.bind(this, "accesoVisible")}
           />
-
           <FeatureItem
             text="Seguridad física y ambiental"
             ImgComponent={Enviromental}
+            handleClick={toggle.bind(this, "ambienteVisible")}
           />
           <FeatureItem
             text="Seguridad en la operativa"
             ImgComponent={ServerImg}
+            handleClick={toggle.bind(this, "operativaVisible")}
           />
+
           <FeatureItem
             text="Seguridad en las telecomunicaciones"
             ImgComponent={TowerImg}
+            handleClick={toggle.bind(this, "teleVisible")}
           />
+
           <FeatureItem
             text="Adquisición, desarrollo y mantenimiento"
             ImgComponent={MentenimientoImg}
+            handleClick={toggle.bind(this, "desarrolloVisible")}
           />
         </div>
 
@@ -66,13 +69,8 @@ const FeatureMain = props => {
   );
 };
 
-const mapStateToProps = ({
-  empresasReducer,
-  politicasReducer,
-  activosReducer,
-  accesosReducer
-}) => {
-  return { empresasReducer, politicasReducer, activosReducer, accesosReducer };
+const mapStateToProps = ({}) => {
+  return {};
 };
 
 const mapDispatchToProps = {

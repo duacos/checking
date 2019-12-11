@@ -22,19 +22,13 @@ export const editarActivo = (empresa_id, data) => async (
         type: TRAER_UNO,
         payload: response.data
       });
-
-      console.log("put executed from activosActions with state: ", getState());
     } catch (error) {
-      console.log("Error: " + error.message);
       dispatch({
         type: ERROR,
         payload: "algo salió mal"
       });
     }
   } else {
-    console.log("post executed from activosActions state");
-    console.log("state BEFORE: ", getState());
-
     const response = await axios.post(`http://localhost:1500/api/v2/activos`, {
       ...data,
       empresa_id
@@ -43,7 +37,5 @@ export const editarActivo = (empresa_id, data) => async (
       type: TRAER_UNO,
       payload: response.data
     });
-
-    console.log("state AFTER: ", getState());
   }
 };

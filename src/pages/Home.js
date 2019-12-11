@@ -18,6 +18,7 @@ class Home extends React.Component {
             <Link to={`/empresas/${empresa.id}`}>{empresa.name}</Link>
           </h1>
           {empresa.description}
+          <Link to={`/empresas/${empresa.id}/edit`}>Editar</Link>
         </div>
       );
     });

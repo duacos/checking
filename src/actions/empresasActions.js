@@ -69,10 +69,6 @@ export const crearEmpresa = ({ name, description }) => async dispatch => {
 };
 
 export const toggleFeature = feature => (dispatch, getState) => {
-  console.log(
-    "empresasActions politicasReducer BEFORE: ",
-    getState().politicasReducer
-  );
   Object.keys(getState().empresasReducer.visibility).forEach(key => {
     if (getState().empresasReducer.visibility[feature] !== feature)
       getState().empresasReducer.visibility[key] = false;
@@ -82,10 +78,6 @@ export const toggleFeature = feature => (dispatch, getState) => {
     type: TOGGLE_FEATURE,
     payload: feature
   });
-  console.log(
-    "empresasActions politicasReducer AFTER: ",
-    getState().politicasReducer
-  );
 };
 
 export const locationChange = empresa_id => async (dispatch, getState) => {
@@ -94,6 +86,10 @@ export const locationChange = empresa_id => async (dispatch, getState) => {
     getState().politicasReducer.data = {};
     getState().activosReducer.data = {};
     getState().accesosReducer.data = {};
+    getState().ambientesReducer.data = {};
+    getState().operativasReducer.data = {};
+    getState().telesReducer.data = {};
+    getState().desarrollosReducer.data = {};
 
     console.log("LOCATION CHANGE");
   }

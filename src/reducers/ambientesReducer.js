@@ -1,4 +1,4 @@
-import { TRAER_UNA } from "../types/PoliticasTypes";
+import { TRAER_UNO } from "../types/AmbientesTypes";
 
 const INITIAL_STATE = {
   data: {},
@@ -8,7 +8,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case TRAER_UNA:
+    case TRAER_UNO:
       return { ...state, data: action.payload, loading: false, error: "" };
 
     default:

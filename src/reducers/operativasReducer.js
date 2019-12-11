@@ -1,4 +1,4 @@
-import { TRAER_UNA } from "../types/PoliticasTypes";
+import { TRAER_UNA } from "../types/OperativasTypes";
 
 const INITIAL_STATE = {
   data: {},

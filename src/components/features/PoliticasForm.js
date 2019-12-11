@@ -8,18 +8,27 @@ const { editarPolitica: politicasEditarPolitica } = politicasActions;
 class PoliticasForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      seguridad_info: "No realizado",
-      revision_string: "No realizado"
-    };
-  }
 
-  seguridadInfoSelect(e) {
-    this.setState({ seguridad_info: e.target.value });
-  }
+    const { politicasReducer, empresasReducer } = this.props;
 
-  resvisionStringSelect(e) {
-    this.setState({ revision_string: e.target.value });
+    const localReducer = politicasReducer;
+
+    if (Object.keys(localReducer.data).length > 0) {
+      this.state = {
+        seguridad_info: localReducer.data.seguridad_info,
+        revision_string: localReducer.data.revision_string
+      };
+    } else if (empresasReducer.data.politica) {
+      this.state = {
+        seguridad_info: empresasReducer.data.politica.seguridad_info,
+        revision_string: empresasReducer.data.politica.revision_string
+      };
+    } else {
+      this.state = {
+        seguridad_info: "No realizado",
+        revision_string: "No realizado"
+      };
+    }
   }
 
   sendChanges() {
@@ -32,11 +41,7 @@ class PoliticasForm extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-    const {
-      seguridad_info,
-      revision_string
-    } = this.props.politicasReducer.data;
+    const { seguridad_info, revision_string } = this.state;
 
     return (
       <React.Fragment>
@@ -44,15 +49,23 @@ class PoliticasForm extends React.Component {
           Conjunto de politicas para la seguridad de la informacion:
           <SelectForm
             value={seguridad_info}
-            handleSelect={this.seguridadInfoSelect.bind(this)}
+            handleSelect={e => {
+              this.setState({
+                seguridad_info: e.target.value
+              });
+            }}
           />
         </div>
 
         <div className="item-info">
           Revision de politicas para la seguridad de la informacion:
           <SelectForm
-            defaultValue={revision_string}
-            handleSelect={this.resvisionStringSelect.bind(this)}
+            value={revision_string}
+            handleSelect={e => {
+              this.setState({
+                revision_string: e.target.value
+              });
+            }}
           />
         </div>
 

@@ -1,20 +1,20 @@
 import axios from "axios";
-import { TRAER_UNA, ERROR } from "../types/PoliticasTypes";
+import { TRAER_UNA, ERROR } from "../types/DesarrollosTypes";
 
-export const editarPolitica = (empresa_id, data) => async (
+export const editarDesarrollo = (empresa_id, data) => async (
   dispatch,
   getState
 ) => {
   if (
-    Object.keys(getState().politicasReducer.data).length > 0 ||
-    getState().empresasReducer.data.politica
+    Object.keys(getState().desarrollosReducer.data).length > 0 ||
+    getState().empresasReducer.data.desarrollo
   ) {
-    const politica_id =
-      getState().politicasReducer.data.id ||
-      getState().empresasReducer.data.politica.id;
+    const desarrollo_id =
+      getState().desarrollosReducer.data.id ||
+      getState().empresasReducer.data.desarrollo.id;
     try {
       const response = await axios.put(
-        `http://localhost:1500/api/v2/politicas/${politica_id}`,
+        `http://localhost:1500/api/v2/desarrollos/${desarrollo_id}`,
         data
       );
 
@@ -30,7 +30,7 @@ export const editarPolitica = (empresa_id, data) => async (
     }
   } else {
     const response = await axios.post(
-      `http://localhost:1500/api/v2/politicas`,
+      `http://localhost:1500/api/v2/desarrollos`,
       {
         ...data,
         empresa_id

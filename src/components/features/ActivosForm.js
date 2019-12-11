@@ -10,17 +10,46 @@ const { editarActivo: activosEditarActivo } = activosActions;
 class ActivosForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      inventario: "No realizado",
-      propiedad: "No realizado",
-      uso: "No realizado",
-      devolucion: "No realizado",
-      directrices: "No realizado",
-      etiquetado: "No realizado",
-      gestion: "No realizado",
-      eliminacion: "No realizado",
-      soportes: "No realizado"
-    };
+
+    const { activosReducer, empresasReducer } = this.props;
+
+    if (Object.keys(activosReducer.data).length > 0) {
+      this.state = {
+        inventario: activosReducer.data.inventario,
+        propiedad: activosReducer.data.propiedad,
+        uso: activosReducer.data.uso,
+        devolucion: activosReducer.data.devolucion,
+        directrices: activosReducer.data.directrices,
+        etiquetado: activosReducer.data.etiquetado,
+        gestion: activosReducer.data.gestion,
+        eliminacion: activosReducer.data.eliminacion,
+        soportes: activosReducer.data.soportes
+      };
+    } else if (empresasReducer.data.activo) {
+      this.state = {
+        inventario: empresasReducer.data.activo.inventario,
+        propiedad: empresasReducer.data.activo.propiedad,
+        uso: empresasReducer.data.activo.uso,
+        devolucion: empresasReducer.data.activo.devolucion,
+        directrices: empresasReducer.data.activo.directrices,
+        etiquetado: empresasReducer.data.activo.etiquetado,
+        gestion: empresasReducer.data.activo.gestion,
+        eliminacion: empresasReducer.data.activo.eliminacion,
+        soportes: empresasReducer.data.activo.soportes
+      };
+    } else {
+      this.state = {
+        inventario: "No realizado",
+        propiedad: "No realizado",
+        uso: "No realizado",
+        devolucion: "No realizado",
+        directrices: "No realizado",
+        etiquetado: "No realizado",
+        gestion: "No realizado",
+        eliminacion: "No realizado",
+        soportes: "No realizado"
+      };
+    }
   }
 
   inventarioSelect(e) {
@@ -88,7 +117,7 @@ class ActivosForm extends React.Component {
       gestion,
       eliminacion,
       soportes
-    } = this.props.activosReducer.data;
+    } = this.state;
 
     return (
       <React.Fragment>
@@ -167,8 +196,8 @@ class ActivosForm extends React.Component {
   }
 }
 
-const mapStateToProps = ({ activosReducer }) => {
-  return { activosReducer };
+const mapStateToProps = ({ empresasReducer, activosReducer }) => {
+  return { empresasReducer, activosReducer };
 };
 
 const mapDispatchToProps = {

@@ -13,7 +13,11 @@ const INITIAL_STATE = {
   visibility: {
     activoVisible: false,
     accesoVisible: false,
-    politicaVisible: false
+    politicaVisible: false,
+    ambienteVisible: false,
+    operativaVisible: false,
+    teleVisible: false,
+    desarrolloVisible: false
   }
 };
 
