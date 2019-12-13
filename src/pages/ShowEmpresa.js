@@ -5,7 +5,8 @@ import { connect } from "react-redux";
 import "../styles/ViewStyles.sass";
 import "../styles/ViewDataStyles.sass";
 
-import CumpDominios from "../components/tables/CumpDominios";
+import Chart1 from "../components/Chart1";
+import Chart2 from "../components/Chart2";
 
 const {
   traerUno: empresasTraerUno,
@@ -41,7 +42,6 @@ class ShowEmpresa extends React.Component {
   render() {
     const { empresasReducer } = this.props;
 
-    console.log(empresasReducer.data.seguridad_info);
     const { data } = this.props.empresasReducer;
     const { loading } = this.props.empresasReducer;
 
@@ -56,20 +56,15 @@ class ShowEmpresa extends React.Component {
           <h3>{data.description}</h3>
         </div>
 
-        <div className="feature-section">
-          <div className="feature-list">
-            <div className="show-banner">
-              <CumpDominios
-                promedio={this.promedio.bind(this)}
-                empresasReducer={empresasReducer}
-              />
-            </div>
-          </div>
+        <Chart1
+          promedio={this.promedio.bind(this)}
+          empresasReducer={empresasReducer}
+        />
 
-          <div className="feature-banner ">
-            <div className="show-banner-2">Hola mundo</div>
-          </div>
-        </div>
+        <Chart2
+          promedio={this.promedio.bind(this)}
+          empresasReducer={empresasReducer}
+        />
       </div>
     );
   }
