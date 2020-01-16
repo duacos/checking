@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as empresasActions from "../actions/empresasActions";
 import { ReactComponent as AddButtonImg } from "../assets/images/round-add-button.svg";
+import NewEmpresa from "./NewEmpresa";
 
 class Home extends React.Component {
   componentDidMount() {
@@ -31,18 +32,11 @@ class Home extends React.Component {
     }
     return (
       <div className="Home">
-        <div className="content">
-          <div className="center">
-            <div className="itemList-item-test center-block">
-              <div className="itemList-item-test-img">
-                <Link to="/new">
-                  <AddButtonImg />
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="itemList">{this.listEmpresas()}</div>
+        <div className="itemList-item-test">
+          <NewEmpresa crearEmpresa={this.props.crearEmpresa} />
         </div>
+
+        <div className="itemList">{this.listEmpresas()}</div>
       </div>
     );
   }

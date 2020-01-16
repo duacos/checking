@@ -21,6 +21,34 @@ class Chart3 extends React.Component {
           acum++;
         }
       });
+    } else {
+      if (reducer === "politica" && value === "No realizado") {
+        return 2;
+      }
+
+      if (reducer === "activo" && value === "No realizado") {
+        return 9;
+      }
+
+      if (reducer === "acceso" && value === "No realizado") {
+        return 12;
+      }
+
+      if (reducer === "ambiente" && value === "No realizado") {
+        return 15;
+      }
+
+      if (reducer === "operativa" && value === "No realizado") {
+        return 2;
+      }
+
+      if (reducer === "tele" && value === "No realizado") {
+        return 7;
+      }
+
+      if (reducer === "desarrollo" && value === "No realizado") {
+        return 4;
+      }
     }
 
     return acum;
@@ -106,7 +134,6 @@ class Chart3 extends React.Component {
   }
 
   render() {
-    console.log(this.contarNoRealizado());
     this.options = {
       animationEnabled: true,
       exportEnabled: true,

@@ -1,5 +1,6 @@
 import React from "react";
 import * as empresasActions from "../actions/empresasActions";
+import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import "../styles/ViewStyles.sass";
@@ -31,6 +32,9 @@ class EditEmpresa extends React.Component {
             <h1>{data.name}</h1>
             <h3>{data.description}</h3>
           </div>
+          <Link to={"/empresas/" + this.props.match.params.empresa_id}>
+            <h1>Gráficas</h1>
+          </Link>
         </div>
 
         <FeatureMain {...this.props.match} />

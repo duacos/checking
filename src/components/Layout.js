@@ -7,6 +7,9 @@ const Layout = ({ children }) => {
     <React.Fragment>
       <Header />
       {children}
+      <footer>
+        Checking version 0.1.0 - &copy;{new Date().getFullYear()}{" "}
+      </footer>
     </React.Fragment>
   );
 };
