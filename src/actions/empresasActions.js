@@ -12,7 +12,9 @@ export const traerTodos = () => async dispatch => {
   });
 
   try {
-    const response = await axios.get("http://localhost:1500/api/v2/empresas");
+    const response = await axios.get(
+      "https://checkingappdata.herokuapp.com/api/v2/empresas"
+    );
     dispatch({
       type: TRAER_EMPRESAS_DATA,
       payload: response.data
@@ -32,7 +34,7 @@ export const traerUno = empresa_id => async dispatch => {
   });
   try {
     const response = await axios.get(
-      `http://localhost:1500/api/v2/empresas/${empresa_id}`
+      `https://checkingappdata.herokuapp.com/api/v2/empresas/${empresa_id}`
     );
 
     dispatch({
@@ -50,10 +52,13 @@ export const traerUno = empresa_id => async dispatch => {
 
 export const crearEmpresa = ({ name, description }) => async dispatch => {
   try {
-    const response = await axios.post("http://localhost:1500/api/v2/empresas", {
-      name,
-      description
-    });
+    const response = await axios.post(
+      "https://checkingappdata.herokuapp.com/api/v2/empresas",
+      {
+        name,
+        description
+      }
+    );
 
     dispatch({
       type: TRAER_EMPRESAS_DATA,
