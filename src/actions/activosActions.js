@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TRAER_UNO, ERROR } from "../types/ActivosTypes";
+import { API } from "../config";
 
 export const editarActivo = (empresa_id, data) => async (
   dispatch,
@@ -14,7 +15,7 @@ export const editarActivo = (empresa_id, data) => async (
       getState().empresasReducer.data.activo.id;
     try {
       const response = await axios.put(
-        `http://localhost:1500/api/v2/activos/${activo_id}`,
+        `${API.url}/api/v2/activos/${activo_id}`,
         data
       );
 
@@ -29,7 +30,7 @@ export const editarActivo = (empresa_id, data) => async (
       });
     }
   } else {
-    const response = await axios.post(`http://localhost:1500/api/v2/activos`, {
+    const response = await axios.post(`${API.url}/api/v2/activos`, {
       ...data,
       empresa_id
     });

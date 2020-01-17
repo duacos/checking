@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TRAER_UNO, ERROR } from "../types/AccesosTypes";
+import { API } from "../config";
 
 export const editarAcceso = (empresa_id, data) => async (
   dispatch,
@@ -16,7 +17,7 @@ export const editarAcceso = (empresa_id, data) => async (
       console.log("put executed from accesosActions");
 
       const response = await axios.put(
-        `http://localhost:1500/api/v2/accesos/${acceso_id}`,
+        `${API.url}/api/v2/accesos/${acceso_id}`,
         data
       );
 
@@ -33,7 +34,7 @@ export const editarAcceso = (empresa_id, data) => async (
     }
   } else {
     console.log("post executed from accesosActions state");
-    const response = await axios.post(`http://localhost:1500/api/v2/accesos`, {
+    const response = await axios.post(`${API.url}/api/v2/accesos`, {
       ...data,
       empresa_id
     });

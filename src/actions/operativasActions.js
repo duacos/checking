@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TRAER_UNA, ERROR } from "../types/OperativasTypes";
+import { API } from "../config";
 
 export const editarOperativa = (empresa_id, data) => async (
   dispatch,
@@ -14,7 +15,7 @@ export const editarOperativa = (empresa_id, data) => async (
       getState().empresasReducer.data.operativa.id;
     try {
       const response = await axios.put(
-        `http://localhost:1500/api/v2/operativas/${operativa_id}`,
+        `${API.url}/api/v2/operativas/${operativa_id}`,
         data
       );
 
@@ -29,13 +30,10 @@ export const editarOperativa = (empresa_id, data) => async (
       });
     }
   } else {
-    const response = await axios.post(
-      `http://localhost:1500/api/v2/operativas`,
-      {
-        ...data,
-        empresa_id
-      }
-    );
+    const response = await axios.post(`${API.url}/api/v2/operativas`, {
+      ...data,
+      empresa_id
+    });
     dispatch({
       type: TRAER_UNA,
       payload: response.data

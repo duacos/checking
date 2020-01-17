@@ -1,5 +1,6 @@
 import axios from "axios";
 import { TRAER_UNA, ERROR } from "../types/TelesTypes";
+import { API } from "../config";
 
 export const editarTele = (empresa_id, data) => async (dispatch, getState) => {
   if (
@@ -11,7 +12,7 @@ export const editarTele = (empresa_id, data) => async (dispatch, getState) => {
       getState().empresasReducer.data.tele.id;
     try {
       const response = await axios.put(
-        `http://localhost:1500/api/v2/teles/${tele_id}`,
+        `${API.url}/api/v2/teles/${tele_id}`,
         data
       );
 
@@ -26,7 +27,7 @@ export const editarTele = (empresa_id, data) => async (dispatch, getState) => {
       });
     }
   } else {
-    const response = await axios.post(`http://localhost:1500/api/v2/teles`, {
+    const response = await axios.post(`${API.url}/api/v2/teles`, {
       ...data,
       empresa_id
     });
