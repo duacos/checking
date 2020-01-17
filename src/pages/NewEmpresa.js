@@ -8,14 +8,12 @@ class NewEmpresa extends React.Component {
     this.description = React.createRef();
   }
 
-  handleClick(e) {
-    e.preventDefault();
+  handleClick() {
     if (this.name.current.value && this.description.current.value) {
       this.props.crearEmpresa({
         name: this.name.current.value,
         description: this.description.current.value
       });
-      window.location.replace("/");
     }
   }
   render() {
