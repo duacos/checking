@@ -7,9 +7,14 @@ header
 
 nav
   display: inline-block
-  vertical-align: top
+  top: 50%
+  transform: translateY(-50%)
   position: absolute
   right: 0
+
+  ul
+    margin: 0
+    padding: 0
   li
     list-style: none
     display: inline-block
@@ -31,4 +36,13 @@ footer
   color: #2b2b2b
   padding: 1em
   margin-top: 2em
+  font-size: .7em
   text-align: right
+
+
+@media only screen and (max-width: 414px) 
+
+  .logo
+    width: 4em
+  nav svg
+    width: 1.5em
