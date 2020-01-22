@@ -6,7 +6,8 @@ table
   font-size: 1em
   font-weight: normal
   color: #636363
-  border-radius: 20px
+  background-color: white
+  border-radius: 10px
   thead tr th
     padding: 1.5em
     font-weight: bold
@@ -21,3 +22,39 @@ table
     padding: 1em
   tr
     padding: 2em
+
+
+
+.data-list, .graph-banner
+  margin: 0 auto
+
+.data-section
+  margin: 0 auto
+  margin-left: 3em
+  margin-right: 3em
+
+.graph-banner
+  margin-top: 1.5em
+  margin-bottom: 1.5em
+
+
+.data-banner
+  border-radius: 10px
+  overflow: hidden
+  box-shadow: .4em .4em 0 rgba(0,0,0,.044)
+
+
+.graph-banner canvas
+  width: 100%
+  border-radius: 10px
+  overflow: hidden
+  box-shadow: .4em .4em 0 rgba(0,0,0,.024)
+
+@media only screen and (max-width: 414px) 
+
+  .data-section
+    margin-left: 1.1em
+    margin-right: 1.1em
+  table
+    line-height: 1.5em
+    font-size: .9em

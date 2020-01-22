@@ -31,7 +31,10 @@ class EditEmpresa extends React.Component {
           <div className="view-title">
             <h1>{data.name}</h1>
             <h3>{data.description}</h3>
-            <Link to={"/empresas/" + this.props.match.params.empresa_id}>
+            <Link
+              className="switch-view"
+              to={"/empresas/" + this.props.match.params.empresa_id}
+            >
               <h1>Gráficas</h1>
             </Link>
           </div>

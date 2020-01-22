@@ -229,9 +229,9 @@ class Chart1 extends React.Component {
       ]
     };
     return (
-      <div className="feature-section">
-        <div className="feature-list">
-          <div className="show-banner">
+      <div className="data-section">
+        <div className="data-list">
+          <div className="data-banner">
             <CumpDominios
               defineDirectrices={this.defineDirectrices.bind(
                 this,
@@ -265,10 +265,9 @@ class Chart1 extends React.Component {
             />
           </div>
         </div>
-        <div className="feature-banner ">
-          <div className="show-banner-2">
-            <CanvasJSChart options={this.options} />
-          </div>
+
+        <div className="graph-banner">
+          <CanvasJSChart options={this.options} />
         </div>
       </div>
     );

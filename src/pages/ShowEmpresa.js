@@ -3,7 +3,7 @@ import * as empresasActions from "../actions/empresasActions";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
-import "../styles/ViewStyles.sass";
+
 import "../styles/ViewDataStyles.sass";
 
 import Chart1 from "../components/Chart1";
@@ -56,6 +56,7 @@ class ShowEmpresa extends React.Component {
           <h1>{data.name}</h1>
           <h3>{data.description}</h3>
           <Link
+            className="switch-view"
             to={"/empresas/" + this.props.match.params.empresa_id + "/edit"}
           >
             <h1>Editar</h1>

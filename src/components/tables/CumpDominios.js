@@ -12,7 +12,7 @@ class CumpDominios extends React.Component {
     console.log(calidad);
     switch (calidad) {
       case "bajo":
-        return { backgroundColor: "#ffeeee" };
+        return { backgroundColor: "rgb(255, 248, 248)" };
 
       case "medio":
         return { backgroundColor: "#fffcca" };

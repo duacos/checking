@@ -5,6 +5,7 @@
 .view-title
   color: #9e9e9e
   margin-left: 1em
+  margin-bottom: 1em
   h1
     font-size: 2em
     text-transform: capitalize
@@ -108,14 +109,8 @@
     text-transform: none
 
 .show
-
-  &-banner-2
-    width: 550px
-
   &-banner
     width: 700px
-
-  &-banner-2, &-banner
     background-color: white
     position: relative
     margin: 1em
@@ -141,6 +136,9 @@
       width: 400px
 
 @media only screen and (max-width: 812px) 
+
+  .view-title
+    font-size: .8em
   .feature
 
     &-list
