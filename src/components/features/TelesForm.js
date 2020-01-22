@@ -74,7 +74,7 @@ class TelesForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Controles de red
+          <p>Controles de red</p>
           <SelectForm
             value={controles}
             handleSelect={e => {
@@ -86,7 +86,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Mecanismos de seguridad asociados a servicios en red
+          <p>Mecanismos de seguridad asociados a servicios en red</p>
           <SelectForm
             value={mecanismos}
             handleSelect={e => {
@@ -98,7 +98,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Segregación de redes
+          <p>Segregación de redes</p>
           <SelectForm
             value={segregacion}
             handleSelect={e => {
@@ -110,7 +110,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Políticas y procedimientos de intercambio de información
+          <p>Políticas y procedimientos de intercambio de información</p>
           <SelectForm
             value={politicas}
             handleSelect={e => {
@@ -122,7 +122,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Acuerdos de intercambio
+          <p>Acuerdos de intercambio</p>
           <SelectForm
             value={intercambio}
             handleSelect={e => {
@@ -134,7 +134,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Mensajería electrónica
+          <p>Mensajería electrónica</p>
           <SelectForm
             value={mensajeria}
             handleSelect={e => {
@@ -146,7 +146,7 @@ class TelesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Acuerdos de confidencialidad y secreto
+          <p>Acuerdos de confidencialidad y secreto</p>
           <SelectForm
             value={confidencialidad}
             handleSelect={e => {

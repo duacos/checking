@@ -165,7 +165,7 @@ class AccesosForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Política de control de accesos
+          <p>Política de control de accesos</p>
           <SelectForm
             value={politicaControl}
             handleSelect={this.politicaControlSelect.bind(this)}
@@ -173,7 +173,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Control de acceso a las redes y servicios asociados
+          <p>Control de acceso a las redes y servicios asociados</p>
           <SelectForm
             value={controlAcceso}
             handleSelect={this.controlAccesoSelect.bind(this)}
@@ -181,7 +181,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Gestión de altas/bajas en el registro de usuarios
+          <p>Gestión de altas/bajas en el registro de usuarios</p>
           <SelectForm
             value={gestionAltasBajas}
             handleSelect={this.gestionAltasBajasSelect.bind(this)}
@@ -189,7 +189,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Gestión de los derechos de acceso asignados a usuarios
+          <p>Gestión de los derechos de acceso asignados a usuarios</p>
           <SelectForm
             value={gestionDerechosUsuarios}
             handleSelect={this.gestionDerechosUsuariosSelect.bind(this)}
@@ -197,7 +197,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Gestión de los derechos de acceso con privilegios especiales
+          <p>Gestión de los derechos de acceso con privilegios especiales</p>
           <SelectForm
             value={gestionDerechosEspeciales}
             handleSelect={this.gestionDerechosEspecialesSelect.bind(this)}
@@ -205,7 +205,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Revisión de los derechos de acceso de los usuarios
+          <p>Revisión de los derechos de acceso de los usuarios</p>
           <SelectForm
             value={revisionDerechos}
             handleSelect={this.revisionDerechosSelect.bind(this)}
@@ -213,7 +213,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Retirada o adaptación de los derechos de acceso
+          <p>Retirada o adaptación de los derechos de acceso</p>
           <SelectForm
             value={retirada}
             handleSelect={this.retiradaSelect.bind(this)}
@@ -221,7 +221,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Restricción del acceso a la información
+          <p>Restricción del acceso a la información</p>
           <SelectForm
             value={restriccion}
             handleSelect={this.restriccionSelect.bind(this)}
@@ -229,7 +229,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Procedimientos seguros de inicio de sesión
+          <p>Procedimientos seguros de inicio de sesión</p>
           <SelectForm
             value={procedimientos}
             handleSelect={this.procedimientosSelect.bind(this)}
@@ -237,7 +237,7 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Gestión de contraseñas de usuario
+          <p>Gestión de contraseñas de usuario</p>
           <SelectForm
             value={gestionPassword}
             handleSelect={this.gestionPasswordSelect.bind(this)}
@@ -245,12 +245,12 @@ class AccesosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Uso de herramientas de administración de sistemas
+          <p>Uso de herramientas de administración de sistemas</p>
           <SelectForm value={uso} handleSelect={this.usoSelect.bind(this)} />
         </div>
 
         <div className="item-info">
-          Control de acceso al código fuente de los programas
+          <p>Control de acceso al código fuente de los programas</p>
           <SelectForm
             value={accesoCodigo}
             handleSelect={this.accesoCodigoSelect.bind(this)}

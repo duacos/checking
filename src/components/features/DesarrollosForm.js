@@ -54,7 +54,7 @@ class DesarrollosForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Política de desarrollo seguro de software
+          <p>Política de desarrollo seguro de software</p>
           <SelectForm
             value={politica}
             handleSelect={e => {
@@ -66,7 +66,7 @@ class DesarrollosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Seguridad en entornos de desarrollo
+          <p>Seguridad en entornos de desarrollo</p>
           <SelectForm
             value={seguridad}
             handleSelect={e => {
@@ -78,7 +78,7 @@ class DesarrollosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Pruebas de funcionalidad durante el desarrollo de los sistemas
+          <p>Pruebas de funcionalidad durante el desarrollo de los sistemas</p>
           <SelectForm
             value={funcionalidad}
             handleSelect={e => {
@@ -90,7 +90,7 @@ class DesarrollosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Pruebas de aceptación
+          <p>Pruebas de aceptación</p>
           <SelectForm
             value={aceptacion}
             handleSelect={e => {

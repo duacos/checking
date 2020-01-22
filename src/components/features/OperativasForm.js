@@ -46,7 +46,7 @@ class OperativasForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Controles contra el código malicioso
+          <p>Controles contra el código malicioso</p>
           <SelectForm
             value={codigoMalicioso}
             handleSelect={e => {
@@ -58,7 +58,7 @@ class OperativasForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Copias de seguridad de la información
+          <p>Copias de seguridad de la información</p>
           <SelectForm
             value={copiaSeguridad}
             handleSelect={e => {

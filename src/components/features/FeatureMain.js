@@ -15,59 +15,82 @@ import Banner from "./Banner";
 
 const { toggleFeature: empresasToggleFeature } = empresasActions;
 
-const FeatureMain = props => {
-  const toggle = reducer => {
-    props.empresasToggleFeature(reducer);
-  };
+class FeatureMain extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      bannerVisible: false
+    };
+  }
 
-  return (
-    <div className="content">
-      <div className="feature-section">
-        <div className="feature-list">
-          <FeatureItem
-            text="Políticas de seguridad"
-            ImgComponent={SegOp}
-            handleClick={toggle.bind(this, "politicaVisible")}
-          />
-          <FeatureItem
-            text="Gestión de Activos"
-            ImgComponent={Execution}
-            handleClick={toggle.bind(this, "activoVisible")}
-          />
-          <FeatureItem
-            text="Control de acceso"
-            ImgComponent={Key}
-            handleClick={toggle.bind(this, "accesoVisible")}
-          />
-          <FeatureItem
-            text="Seguridad física y ambiental"
-            ImgComponent={Enviromental}
-            handleClick={toggle.bind(this, "ambienteVisible")}
-          />
-          <FeatureItem
-            text="Seguridad en la operativa"
-            ImgComponent={ServerImg}
-            handleClick={toggle.bind(this, "operativaVisible")}
-          />
+  toggle(reducer) {
+    if (window.innerWidth <= 812) {
+      this.toggleBanner(this);
+      window.scroll(0, 0);
+    }
+    this.props.empresasToggleFeature(reducer);
+  }
 
-          <FeatureItem
-            text="Seguridad en las telecomunicaciones"
-            ImgComponent={TowerImg}
-            handleClick={toggle.bind(this, "teleVisible")}
-          />
+  toggleBanner() {
+    this.setState({
+      bannerVisible: !this.state.bannerVisible
+    });
+  }
 
-          <FeatureItem
-            text="Adquisición, desarrollo y mantenimiento"
-            ImgComponent={MentenimientoImg}
-            handleClick={toggle.bind(this, "desarrolloVisible")}
+  render() {
+    return (
+      <div className="content">
+        <div className="feature-section">
+          <div className="feature-list">
+            <FeatureItem
+              text="Políticas de seguridad"
+              ImgComponent={SegOp}
+              handleClick={this.toggle.bind(this, "politicaVisible")}
+            />
+            <FeatureItem
+              text="Gestión de Activos"
+              ImgComponent={Execution}
+              handleClick={this.toggle.bind(this, "activoVisible")}
+            />
+            <FeatureItem
+              text="Control de acceso"
+              ImgComponent={Key}
+              handleClick={this.toggle.bind(this, "accesoVisible")}
+            />
+            <FeatureItem
+              text="Seguridad física y ambiental"
+              ImgComponent={Enviromental}
+              handleClick={this.toggle.bind(this, "ambienteVisible")}
+            />
+            <FeatureItem
+              text="Seguridad en la operativa"
+              ImgComponent={ServerImg}
+              handleClick={this.toggle.bind(this, "operativaVisible")}
+            />
+
+            <FeatureItem
+              text="Seguridad en las telecomunicaciones"
+              ImgComponent={TowerImg}
+              handleClick={this.toggle.bind(this, "teleVisible")}
+            />
+
+            <FeatureItem
+              text="Adquisición, desarrollo y mantenimiento"
+              ImgComponent={MentenimientoImg}
+              handleClick={this.toggle.bind(this, "desarrolloVisible")}
+            />
+          </div>
+
+          <Banner
+            bannerVisible={this.state.bannerVisible}
+            toggleBanner={this.toggleBanner.bind(this)}
+            empresa_id={this.props.params.empresa_id}
           />
         </div>
-
-        <Banner empresa_id={props.params.empresa_id} />
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 const mapStateToProps = ({}) => {
   return {};

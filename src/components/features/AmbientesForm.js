@@ -115,7 +115,7 @@ class AmbientesForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Perímetro de seguridad física
+          <p>Perímetro de seguridad física</p>
           <SelectForm
             value={perimetros}
             handleSelect={e => {
@@ -127,7 +127,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Controles físicos de entrada
+          <p>Controles físicos de entrada</p>
           <SelectForm
             value={controles}
             handleSelect={e => {
@@ -139,7 +139,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Seguridad de oficinas, despachos y recursos
+          <p>Seguridad de oficinas, despachos y recursos</p>
           <SelectForm
             value={seguridad}
             handleSelect={e => {
@@ -151,7 +151,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Protección contra las amenazas externas y ambientales
+          <p>Protección contra las amenazas externas y ambientales</p>
           <SelectForm
             value={proteccion}
             handleSelect={e => {
@@ -163,7 +163,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          El trabajo en áreas seguras
+          <p>El trabajo en áreas seguras</p>
           <SelectForm
             value={areasSeguras}
             handleSelect={e => {
@@ -175,7 +175,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Áreas de acceso público, carga y descarga
+          <p>Áreas de acceso público, carga y descarga</p>
           <SelectForm
             value={accesoPublico}
             handleSelect={e => {
@@ -187,7 +187,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Emplazamiento y protección de equipos
+          <p>Emplazamiento y protección de equipos</p>
           <SelectForm
             value={emplazamiento}
             handleSelect={e => {
@@ -199,7 +199,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Instalaciones de suministro
+          <p>Instalaciones de suministro</p>
           <SelectForm
             value={instalaciones}
             handleSelect={e => {
@@ -211,7 +211,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Seguridad del cableado
+          <p>Seguridad del cableado</p>
           <SelectForm
             value={cableado}
             handleSelect={e => {
@@ -223,7 +223,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Mantenimiento de los equipos
+          <p>Mantenimiento de los equipos</p>
           <SelectForm
             value={mantenimiento}
             handleSelect={e => {
@@ -235,7 +235,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Salida de activos fuera de las dependencias de la empresa
+          <p>Salida de activos fuera de las dependencias de la empresa</p>
           <SelectForm
             value={salidaActivos}
             handleSelect={e => {
@@ -247,7 +247,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Seguridad de los equipos y activos fuera de las instalaciones
+          <p>Seguridad de los equipos y activos fuera de las instalaciones</p>
           <SelectForm
             value={seguridadEquipos}
             handleSelect={e => {
@@ -259,7 +259,9 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Reutilización o retirada segura de dispositivos de almacenamiento
+          <p>
+            Reutilización o retirada segura de dispositivos de almacenamiento
+          </p>
           <SelectForm
             value={reutilizacion}
             handleSelect={e => {
@@ -271,7 +273,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Equipo informático de usuario desatendido
+          <p>Equipo informático de usuario desatendido</p>
           <SelectForm
             value={equipo}
             handleSelect={e => {
@@ -283,7 +285,7 @@ class AmbientesForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Política de puesto de trabajo despejado y bloqueo de pantalla
+          <p>Política de puesto de trabajo despejado y bloqueo de pantalla</p>
           <SelectForm
             value={politica}
             handleSelect={e => {

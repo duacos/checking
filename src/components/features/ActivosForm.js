@@ -122,7 +122,7 @@ class ActivosForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Inventario de activos
+          <p>Inventario de activos</p>
           <SelectForm
             value={inventario}
             handleSelect={this.inventarioSelect.bind(this)}
@@ -130,7 +130,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Propiedad de los activos
+          <p>Propiedad de los activos</p>
           <SelectForm
             value={propiedad}
             handleSelect={this.propiedadSelect.bind(this)}
@@ -138,12 +138,12 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Uso aceptable de los activos
+          <p>Uso aceptable de los activos</p>
           <SelectForm value={uso} handleSelect={this.usoSelect.bind(this)} />
         </div>
 
         <div className="item-info">
-          Devolución de los activos
+          <p>Devolución de los activos</p>
           <SelectForm
             value={devolucion}
             handleSelect={this.devolucionSelect.bind(this)}
@@ -151,7 +151,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Directrices de clasificación
+          <p>Directrices de clasificación</p>
           <SelectForm
             value={directrices}
             handleSelect={this.directricesSelect.bind(this)}
@@ -159,7 +159,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Etiquetado y manipulado de la información
+          <p>Etiquetado y manipulado de la información</p>
           <SelectForm
             value={etiquetado}
             handleSelect={this.etiquetadoSelect.bind(this)}
@@ -167,7 +167,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Gestión de soportes extraíbles
+          <p>Gestión de soportes extraíbles</p>
           <SelectForm
             value={gestion}
             handleSelect={this.gestionSelect.bind(this)}
@@ -175,7 +175,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Eliminación de soportes
+          <p>Eliminación de soportes</p>
           <SelectForm
             value={eliminacion}
             handleSelect={this.eliminacionSelect.bind(this)}
@@ -183,7 +183,7 @@ class ActivosForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Soportes físicos en tránsito
+          <p>Soportes físicos en tránsito</p>
           <SelectForm
             value={soportes}
             handleSelect={this.soportesSelect.bind(this)}

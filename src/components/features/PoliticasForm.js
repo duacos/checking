@@ -46,7 +46,7 @@ class PoliticasForm extends React.Component {
     return (
       <React.Fragment>
         <div className="item-info">
-          Conjunto de politicas para la seguridad de la informacion:
+          <p>Conjunto de politicas para la seguridad de la informacion:</p>
           <SelectForm
             value={seguridad_info}
             handleSelect={e => {
@@ -58,7 +58,7 @@ class PoliticasForm extends React.Component {
         </div>
 
         <div className="item-info">
-          Revision de politicas para la seguridad de la informacion:
+          <p>Revision de politicas para la seguridad de la informacion:</p>
           <SelectForm
             value={revision_string}
             handleSelect={e => {

@@ -36,9 +36,24 @@ class Banner extends React.Component {
 
   render() {
     return (
-      <div className="feature-banner">
-        <div className="feature-banner-box">{this.toggleFeatures()}</div>
-      </div>
+      <React.Fragment>
+        {this.props.bannerVisible ? (
+          <div className="feature-banner">
+            <div className="feature-banner-box">
+              {this.toggleFeatures()}
+              <button onClick={this.props.toggleBanner.bind(this)}>
+                Ocultar
+              </button>
+            </div>
+          </div>
+        ) : window.innerWidth > 812 ? (
+          <div className="feature-banner">
+            <div className="feature-banner-box">{this.toggleFeatures()}</div>
+          </div>
+        ) : (
+          ""
+        )}
+      </React.Fragment>
     );
   }
 }
