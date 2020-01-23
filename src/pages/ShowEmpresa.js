@@ -9,6 +9,8 @@ import "../styles/ViewDataStyles.sass";
 import Chart1 from "../components/Chart1";
 import Chart2 from "../components/Chart2";
 
+import Pacman from "../components/Pacman";
+
 const {
   traerUno: empresasTraerUno,
   locationChange: empresasLocationChange
@@ -47,7 +49,7 @@ class ShowEmpresa extends React.Component {
     const { loading } = this.props.empresasReducer;
 
     if (loading === true) {
-      return "loading...";
+      return <Pacman />;
     }
 
     return (

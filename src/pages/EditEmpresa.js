@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import "../styles/ViewStyles.sass";
+import Pacman from "../components/Pacman";
 
 import FeatureMain from "../components/features/FeatureMain";
 
@@ -22,7 +23,7 @@ class EditEmpresa extends React.Component {
     const { loading } = this.props.empresasReducer;
 
     if (loading === true) {
-      return "loading...";
+      return <Pacman />;
     }
 
     return (

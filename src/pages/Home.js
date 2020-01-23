@@ -3,7 +3,7 @@ import "../styles/HomeStyles.sass";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import * as empresasActions from "../actions/empresasActions";
-import { ReactComponent as AddButtonImg } from "../assets/images/round-add-button.svg";
+import Pacman from "../components/Pacman";
 import NewEmpresa from "./NewEmpresa";
 
 class Home extends React.Component {
@@ -28,7 +28,7 @@ class Home extends React.Component {
   render() {
     console.log(this.props);
     if (this.props.loading === true) {
-      return "loading...";
+      return <Pacman />;
     }
     return (
       <div className="Home">
