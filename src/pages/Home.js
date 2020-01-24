@@ -26,14 +26,13 @@ class Home extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     if (this.props.loading === true) {
       return <Pacman />;
     }
     return (
       <div className="Home">
         <div className="itemList-item-test">
-          <NewEmpresa crearEmpresa={this.props.crearEmpresa} />
+          <NewEmpresa />
         </div>
 
         <div className="itemList">{this.listEmpresas()}</div>

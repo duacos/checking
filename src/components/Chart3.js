@@ -5,19 +5,11 @@ import CanvasJSReact from "../lib/canvasjs.react";
 const CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 class Chart3 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.contadorNorealizado = 0;
-  }
-
   ifExists(reducer, value) {
     let acum = 0;
     if (this.props.empresasReducer.data[reducer]) {
       Object.keys(this.props.empresasReducer.data[reducer]).forEach(key => {
-        if (
-          this.props.empresasReducer.data[reducer][key] === value ||
-          this.props.empresasReducer.data[reducer][key] === null
-        ) {
+        if (this.props.empresasReducer.data[reducer][key] === value) {
           acum++;
         }
       });
@@ -54,8 +46,7 @@ class Chart3 extends React.Component {
     return acum;
   }
 
-  contarNoRealizado() {
-    const value = "No realizado";
+  sumar(value) {
     const suma =
       this.ifExists("politica", value) +
       this.ifExists("activo", value) +
@@ -66,71 +57,36 @@ class Chart3 extends React.Component {
       this.ifExists("desarrollo", value);
 
     return suma;
+  }
+
+  contarNoRealizado() {
+    const value = "No realizado";
+    return this.sumar(value);
   }
 
   contarRealizadoInformalmente() {
     const value = "Realizado informalmente";
-    const suma =
-      this.ifExists("politica", value) +
-      this.ifExists("activo", value) +
-      this.ifExists("acceso", value) +
-      this.ifExists("ambiente", value) +
-      this.ifExists("operativa", value) +
-      this.ifExists("tele", value) +
-      this.ifExists("desarrollo", value);
-    return suma;
+    return this.sumar(value);
   }
 
   contarPlanificado() {
     const value = "Planificado";
-    const suma =
-      this.ifExists("politica", value) +
-      this.ifExists("activo", value) +
-      this.ifExists("acceso", value) +
-      this.ifExists("ambiente", value) +
-      this.ifExists("operativa", value) +
-      this.ifExists("tele", value) +
-      this.ifExists("desarrollo", value);
-    return suma;
+    return this.sumar(value);
   }
 
   contarBienDefinido() {
     const value = "Bien definido";
-    const suma =
-      this.ifExists("politica", value) +
-      this.ifExists("activo", value) +
-      this.ifExists("acceso", value) +
-      this.ifExists("ambiente", value) +
-      this.ifExists("operativa", value) +
-      this.ifExists("tele", value) +
-      this.ifExists("desarrollo", value);
-    return suma;
+    return this.sumar(value);
   }
 
   contarCuantitativamenteControlado() {
     const value = "Cuantitativamente controlado";
-    const suma =
-      this.ifExists("politica", value) +
-      this.ifExists("activo", value) +
-      this.ifExists("acceso", value) +
-      this.ifExists("ambiente", value) +
-      this.ifExists("operativa", value) +
-      this.ifExists("tele", value) +
-      this.ifExists("desarrollo", value);
-    return suma;
+    return this.sumar(value);
   }
 
   contarMejoraContinua() {
-    const value = "Mejora Continua";
-    const suma =
-      this.ifExists("politica", value) +
-      this.ifExists("activo", value) +
-      this.ifExists("acceso", value) +
-      this.ifExists("ambiente", value) +
-      this.ifExists("operativa", value) +
-      this.ifExists("tele", value) +
-      this.ifExists("desarrollo", value);
-    return suma;
+    const value = "Mejora continua";
+    return this.sumar(value);
   }
 
   render() {
@@ -149,7 +105,7 @@ class Chart3 extends React.Component {
           toolTipContent: "<b>{label}</b>: {y}",
           showInLegend: "true",
           legendText: "{label}",
-          indexLabelFontSize: 16,
+          indexLabelFontSize: 14,
           indexLabel: "{label} - {y}",
           dataPoints: [
             {

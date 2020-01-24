@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+
+import * as empresasActions from "../actions/empresasActions";
 
 class NewEmpresa extends React.Component {
   constructor(props) {
@@ -8,12 +11,13 @@ class NewEmpresa extends React.Component {
     this.description = React.createRef();
   }
 
-  handleClick() {
+  async handleClick() {
     if (this.name.current.value && this.description.current.value) {
-      this.props.crearEmpresa({
+      await this.props.crearEmpresa({
         name: this.name.current.value,
         description: this.description.current.value
       });
+      await this.props.traerTodos();
     }
   }
   render() {
@@ -27,4 +31,8 @@ class NewEmpresa extends React.Component {
   }
 }
 
-export default NewEmpresa;
+const mapStateToProps = reducers => {
+  return reducers.empresasReducer;
+};
+
+export default connect(mapStateToProps, empresasActions)(NewEmpresa);
